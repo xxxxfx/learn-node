@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+  <button id="btn-post">1post</button>
+  <button id="btn-get">2get</button>
+  <button id="btn-jsonp">3jsonp</button>
+  <script>
+     $('#btn-get').on('click', function() {
+      $.ajax({
+        type: 'GET',
+        url: 'http://192.168.1.8/api/get',
+        data: { name: 'xiao', age: 25 },
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    })
+    $('#btn-post').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: 'http://192.168.1.8/api/post',
+        data: { name: 'xiao', gender: '女'},
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    })
+    $('#btn-jsonp').on('click', function() {
+      $.ajax({
+        method: 'GET',
+        dataType: 'jsonp', //发起jsonp的请求
+        url: 'http://192.168.1.8/api/jsonp',
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    })
+  </script>
+</body>
+</html>
